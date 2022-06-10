@@ -1,5 +1,5 @@
 /*
-	myCloud v1.0.0-alpha
+	myCloud v1.0.0-alpha by Lobo
 */
 const express = require("express")
 const upload = require("express-fileupload")
@@ -8,9 +8,10 @@ const fs = require("fs")
 const app = express()
 
 app.use(upload())
+app.use(express.static('uploads'))
 
 const mainFile = "/index.html"
-const saveFolder = "/home/user/files/"
+const saveFolder = "/home/user/myCloud/myFiles/"
 
 app.get("/",(req,res) =>
 {
@@ -19,7 +20,7 @@ app.get("/",(req,res) =>
 
 app.get("/list",(req,res) =>
 {
-	fil = ""
+	test = ""
 
 	fs.readdir(saveFolder,(err,files) =>
 	{
@@ -31,11 +32,11 @@ app.get("/list",(req,res) =>
 		{
 			files.forEach((file) =>
 			{
-				fil += file + "<br>"
+				test += "<a href='/" + file + "'>" + file + "<br>"
 			})
 		}
 
-		res.send(fil)
+		res.send(test)
 	})
 })
 
