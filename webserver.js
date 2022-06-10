@@ -1,5 +1,5 @@
 /*
-	WEBSERVER
+	myCloud v1.0.0-alpha
 */
 const express = require("express")
 const upload = require("express-fileupload")
